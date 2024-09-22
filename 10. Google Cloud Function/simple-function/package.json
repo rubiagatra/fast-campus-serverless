@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npx functions-framework --target=helloWorld [--signature-type=http]",
+    "test": "mocha test/*.test.js --timeout=6000 --exit"
   },
   "keywords": [],
   "author": "",
@@ -11,5 +12,10 @@
   "description": "",
   "dependencies": {
     "@google-cloud/functions-framework": "^3.4.2"
+  },
+  "devDependencies": {
+    "gaxios": "^6.7.1",
+    "mocha": "^10.7.3",
+    "wait-port": "^1.1.0"
   }
 }
