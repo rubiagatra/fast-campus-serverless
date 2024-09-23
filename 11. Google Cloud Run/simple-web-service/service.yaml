@@ -1,0 +1,25 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: fastify-cloudrun
+  namespace: default
+  labels:
+    env: production
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/minScale: "1"
+        autoscaling.knative.dev/maxScale: "10"
+    spec:
+      containers:
+        - image: gcr.io/fast-campus-serverless/fastify-cloudrun
+          env:
+            - name: NODE_ENV
+              value: production
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "1"
+          ports:
+            - containerPort: 8080
