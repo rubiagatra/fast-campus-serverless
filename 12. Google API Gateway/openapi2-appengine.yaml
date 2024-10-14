@@ -1,0 +1,21 @@
+swagger: "2.0"
+info:
+  title: app-engine
+  description: Sample API on API Gateway with an App Engine
+  version: 1.0.1
+schemes:
+  - https
+produces:
+  - application/json
+paths:
+  /app-engine:
+    get:
+      summary: App Engine
+      operationId: app-engine
+      x-google-backend:
+        address: https://api-dot-fast-campus-serverless.et.r.appspot.com
+      responses:
+        "200":
+          description: A successful response
+          schema:
+            type: string
