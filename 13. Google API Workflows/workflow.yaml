@@ -1,0 +1,35 @@
+- randomgen_function:
+    call: http.get
+    args:
+      url: https://asia-southeast2-fast-campus-serverless.cloudfunctions.net/randomgen
+    result: randomgen_result
+- multiply_function:
+    call: http.post
+    args:
+      url: https://asia-southeast2-fast-campus-serverless.cloudfunctions.net/multiply
+      body:
+        input: ${randomgen_result.body.random}
+    result: multiply_result
+- log_function:
+    call: http.get
+    args:
+      url: https://api.mathjs.org/v4/
+      query:
+        expr: ${"log(" + string(multiply_result.body.multiplied) + ")"}
+    result: log_result
+- floor_function:
+    call: http.post
+    args:
+      url: https://floor-702660660622.asia-southeast2.run.app
+      body:
+        input: ${log_result.body}
+    result: floor_result
+- create_output_map:
+    assign:
+      - outputMap:
+          randomResult: ${randomgen_result}
+          multiplyResult: ${multiply_result}
+          logResult: ${log_result}
+          floorResult: ${floor_result}
+- return_result:
+    return: ${outputMap}
