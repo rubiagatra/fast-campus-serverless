@@ -14,9 +14,9 @@ fastify.get("/error", async () => {
 });
 
 fastify.get("/delay", async () => {
-  fastify.log.info("Simulasi Delay 2 Detik");
-  await new Promise((r) => setTimeout(r, 2000));
-  return { message: "Simulasi Delay 2 Detik" };
+  fastify.log.info("Simulasi Delay 5 Detik");
+  await new Promise((r) => setTimeout(r, 5000));
+  return { message: "Simulasi Delay 5 Detik" };
 });
 
 const PORT = process.env.PORT || 8080;
