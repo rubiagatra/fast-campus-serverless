@@ -13,7 +13,7 @@ spec:
         autoscaling.knative.dev/maxScale: "10"
     spec:
       containers:
-        - image: gcr.io/fast-campus-serverless/fastify-cloudrun
+        - image: gcr.io/$PROJECT_ID/fastify-cloudrun
           env:
             - name: NODE_ENV
               value: production

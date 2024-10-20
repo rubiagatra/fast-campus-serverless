@@ -9,10 +9,10 @@ gcloud projects add-iam-policy-binding <nama-project> \
 
 # Project Kalian
 
-gcloud projects add-iam-policy-binding fast-campus-serverless \
---member=serviceAccount:fast-campus-serverless@appspot.gserviceaccount.com \
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+--member=serviceAccount:$PROJECT_ID@appspot.gserviceaccount.com \
  --role=roles/appengine.deployer
 
-gcloud projects add-iam-policy-binding fast-campus-serverless \
- --member=serviceAccount:fast-campus-serverless@appspot.gserviceaccount.com \
+gcloud projects add-iam-policy-binding $PROJECT_ID \
+ --member=serviceAccount:$PROJECT_ID@appspot.gserviceaccount.com \
  --role=roles/storage.admin
